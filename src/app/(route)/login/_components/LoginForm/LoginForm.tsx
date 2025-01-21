@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import styles from "./loginForm.module.css";
 
 const LoginForm = () => {
   const [loginId, setLoginId] = useState("");
@@ -51,7 +52,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLoginSubmit}>
+    <form className={styles.loginForm} onSubmit={handleLoginSubmit}>
       <div>
         <input
           type="text"
