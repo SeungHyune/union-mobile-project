@@ -1,7 +1,15 @@
-import styles from "./page.module.css";
+import { MainBanner, SpaceImage } from "../_components/server";
+import { DDayTimer } from "./_components";
 
 const RootPage = () => {
-  return <div className={styles.page}>홈페이지</div>;
+  return (
+    <>
+      <MainBanner>
+        <DDayTimer />
+        <SpaceImage />
+      </MainBanner>
+    </>
+  );
 };
 
 export default RootPage;
