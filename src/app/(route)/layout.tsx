@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Kantumruy_Pro } from "next/font/google";
-import "./globals.css";
-import TanstackProvider from "./_components/TanstackProvider/TanstackProvider";
+import "@/app/_styles/globals.css";
+import { TanstackProvider } from "./_components";
 
-const kantumruyPro = Kantumruy_Pro({ subsets: ["latin"], weight: ["400"] });
+const kantumruyPro = Kantumruy_Pro({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${kantumruyPro.className}`}>
         <TanstackProvider>
-          <main>{children}</main>
+          <main id="app">{children}</main>
         </TanstackProvider>
       </body>
     </html>
