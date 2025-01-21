@@ -22,7 +22,7 @@ const MainBanner = ({ children }: MainBannerProps) => {
         />
       </div>
       <article className={styles.contentContainer}>
-        <span>Cast your vote for the brightest cadidate!</span>
+        <span>Cast your vote for the brightest candidate!</span>
         <span>World Miss University voting starts now!</span>
       </article>
       {children}
