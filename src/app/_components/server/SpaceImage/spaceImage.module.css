@@ -1,0 +1,12 @@
+.imgBox {
+  position: relative;
+}
+
+.imgBox img {
+  position: relative !important;
+  height: auto !important;
+}
+
+.spaceImg {
+  aspect-ratio: 4.85;
+}
