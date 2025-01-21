@@ -1,0 +1,67 @@
+.informationSection {
+  padding: 5rem 1.6rem;
+  background-color: #1b1b1b;
+}
+
+.informationSection article {
+  margin-bottom: 3rem;
+}
+
+.informationSection article mark {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.6rem;
+  color: #6f76ff;
+  background-color: transparent;
+}
+
+.informationSection article h3 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 2.9rem;
+  color: #fff;
+  margin: 1rem 0 4rem;
+}
+
+.informationSection article h3 span {
+  display: block;
+}
+
+.informationSection article p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+  color: #aeaeb2;
+}
+
+.informationSection > ul {
+  background-color: #232222;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #dbdbdb;
+  padding: 0 1.4rem;
+}
+
+.informationSection > ul > li {
+  display: flex;
+  gap: 1.6rem;
+  padding: 1.4rem 0;
+}
+
+.informationSection > ul > li > strong {
+  color: #f6f6f6;
+  font-weight: 500;
+  width: 7.7rem;
+}
+
+.informationSection > ul > li > ul,
+.informationSection > ul > li > span {
+  flex: 1;
+  padding-left: 2rem;
+}
+
+.informationSection > ul > li > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
