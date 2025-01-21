@@ -1,0 +1,31 @@
+.timerContainer {
+  display: flex;
+  gap: 1.8rem;
+  padding: 0 5.7rem;
+  margin-top: 2.3rem;
+}
+
+.timerContainer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.timerContainer > div > time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #dadada;
+  border-radius: 0.4rem;
+  aspect-ratio: 1 / 1;
+}
+
+.timerContainer > div > span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #b9b9b9;
+}
