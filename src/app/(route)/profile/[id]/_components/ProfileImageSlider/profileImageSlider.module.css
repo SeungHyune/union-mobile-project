@@ -6,7 +6,6 @@
   display: flex;
   list-style: none;
   transform: translateX(0);
-  transition: transform 0.3s;
 }
 
 .slider li {
@@ -15,6 +14,14 @@
   height: 100%;
   max-width: 60rem;
   aspect-ratio: 1/1;
+}
+
+.slider li img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 .circleList {

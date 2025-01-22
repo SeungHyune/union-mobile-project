@@ -47,7 +47,10 @@ const ProfileItem = ({ candidateId }: ProfileItemProps) => {
 
   return (
     <section className={styles.profileSection}>
-      <ProfileImageSlider profileInfoList={candidateProfile.profileInfoList} />
+      <ProfileImageSlider
+        profileInfoList={candidateProfile.profileInfoList}
+        candidateName={candidateProfile.name}
+      />
       <section>
         <ProfileContent candidateProfile={candidateProfile} />
         <article className={styles.copyrightContainer}>
