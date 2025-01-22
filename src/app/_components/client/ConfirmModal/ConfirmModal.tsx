@@ -1,3 +1,5 @@
+"use client";
+
 import Modal from "../Modal/Modal";
 import styles from "./confirmModal.module.css";
 
