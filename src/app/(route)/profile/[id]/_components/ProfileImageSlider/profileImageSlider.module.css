@@ -1,0 +1,35 @@
+.profileImageSliderSection {
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  list-style: none;
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+.slider li {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  max-width: 60rem;
+  aspect-ratio: 1/1;
+}
+
+.circleList {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.circleList li {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  cursor: pointer;
+}

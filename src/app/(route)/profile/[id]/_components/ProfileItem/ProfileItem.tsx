@@ -46,36 +46,38 @@ const ProfileItem = ({ candidateId }: ProfileItemProps) => {
   }
 
   return (
-    <>
-      <ProfileImageSlider />
-      <ProfileContent candidateProfile={candidateProfile} />
-      <article className={styles.copyrightContainer}>
-        <p>COPYRIGHT © WUPSC ALL RIGHT RESERVED.</p>
-      </article>
-      <article className={styles.buttonContainer}>
-        <VoteButton
-          isVoted={candidateProfile.voted}
-          candidateId={candidateProfile.id}
-          height="4.8rem"
-          handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
-          handleIncompleteOpenToggle={handleIncompleteOpenToggle}
-        />
-        <ConfirmModal
-          isToggle={isCompleteModalToggle}
-          title={VOTE_COMPLETE_MODAL.TITLE}
-          content={VOTE_COMPLETE_MODAL.CONTENT}
-          completeText={VOTE_COMPLETE_MODAL.COMPLETE_BUTTON_TEXT}
-          handleCloseModal={handleCompleteModalCloseToggle}
-        />
-        <ConfirmModal
-          isToggle={isIncompleteModalToggle}
-          title={VOTE_INCOMPLETE_MODAL.TITLE}
-          content={VOTE_INCOMPLETE_MODAL.CONTENT}
-          completeText={VOTE_INCOMPLETE_MODAL.COMPLETE_BUTTON_TEXT}
-          handleCloseModal={handleIncompleteCloseToggle}
-        />
-      </article>
-    </>
+    <section className={styles.profileSection}>
+      <ProfileImageSlider profileInfoList={candidateProfile.profileInfoList} />
+      <section>
+        <ProfileContent candidateProfile={candidateProfile} />
+        <article className={styles.copyrightContainer}>
+          <p>COPYRIGHT © WUPSC ALL RIGHT RESERVED.</p>
+        </article>
+        <article className={styles.buttonContainer}>
+          <VoteButton
+            isVoted={candidateProfile.voted}
+            candidateId={candidateProfile.id}
+            height="4.8rem"
+            handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
+            handleIncompleteOpenToggle={handleIncompleteOpenToggle}
+          />
+          <ConfirmModal
+            isToggle={isCompleteModalToggle}
+            title={VOTE_COMPLETE_MODAL.TITLE}
+            content={VOTE_COMPLETE_MODAL.CONTENT}
+            completeText={VOTE_COMPLETE_MODAL.COMPLETE_BUTTON_TEXT}
+            handleCloseModal={handleCompleteModalCloseToggle}
+          />
+          <ConfirmModal
+            isToggle={isIncompleteModalToggle}
+            title={VOTE_INCOMPLETE_MODAL.TITLE}
+            content={VOTE_INCOMPLETE_MODAL.CONTENT}
+            completeText={VOTE_INCOMPLETE_MODAL.COMPLETE_BUTTON_TEXT}
+            handleCloseModal={handleIncompleteCloseToggle}
+          />
+        </article>
+      </section>
+    </section>
   );
 };
 

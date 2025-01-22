@@ -1,3 +1,9 @@
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
 .copyrightContainer {
   font-family: "roboto";
   font-size: 1rem;

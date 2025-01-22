@@ -48,7 +48,7 @@ export interface CandidateDetailResponse {
   voted: boolean;
 }
 
-interface CandidateProfileInfo {
+export interface CandidateProfileInfo {
   fileArea: number;
   displayOrder: number;
   profileUrl: string;

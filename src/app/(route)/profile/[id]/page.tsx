@@ -7,11 +7,7 @@ interface ProfilePageProps {
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const { id } = await params;
 
-  return (
-    <section>
-      <ProfileItem candidateId={id} />
-    </section>
-  );
+  return <ProfileItem candidateId={id} />;
 };
 
 export default ProfilePage;
