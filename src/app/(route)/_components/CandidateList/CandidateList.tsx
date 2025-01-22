@@ -47,7 +47,7 @@ const CandidateList = () => {
     handleCloseToggle: handleIncompleteCloseToggle,
   } = useToggle();
 
-  if (!candidates || !votedList) {
+  if (!candidates) {
     return null;
   }
 
@@ -64,7 +64,7 @@ const CandidateList = () => {
               name={name}
               profileUrl={profileUrl}
               voteCnt={voteCnt}
-              votedList={votedList}
+              votedList={votedList || []}
               handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
               handleIncompleteOpenToggle={handleIncompleteOpenToggle}
             />
