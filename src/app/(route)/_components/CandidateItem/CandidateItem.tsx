@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./candidateItem.module.css";
-import { VoteButton } from "./_components";
+import { VoteButton } from "..";
 
 interface CandidateItemProps {
   id: number;
