@@ -29,3 +29,22 @@ export const getCandidateList = async ({
 
   return response.json();
 };
+
+interface GetVotedListProps {
+  userId: string;
+}
+
+export const getVotedList = async ({ userId }: GetVotedListProps) => {
+  const response = await fetchApi(`${CANDIDATE.VOTED_LIST}?userId=${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return response.json();
+};
