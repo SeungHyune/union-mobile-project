@@ -48,3 +48,29 @@ export const getVotedList = async ({ userId }: GetVotedListProps) => {
 
   return response.json();
 };
+
+interface GetCandidateDetailProps {
+  candidateId: string;
+  userId: string;
+}
+
+export const getCandidateDetail = async ({
+  candidateId,
+  userId,
+}: GetCandidateDetailProps) => {
+  const response = await fetchApi(
+    `${CANDIDATE.DETAIL}/${candidateId}?userId=${userId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return response.json();
+};
