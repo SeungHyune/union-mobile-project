@@ -16,6 +16,8 @@ import {
   VOTE_COMPLETE_MODAL,
   VOTE_INCOMPLETE_MODAL,
 } from "./candidate.constants";
+import { useVotedCandidatesStore } from "@/app/_store/useVotedCandidatesStore/useVotedCandidatesStore";
+import { useEffect } from "react";
 
 const CandidateList = () => {
   const { data: candidates } = useQuery<CandidateListResponse>({
@@ -29,12 +31,21 @@ const CandidateList = () => {
   });
 
   const { loginId } = useLoginInfoStore();
+  const { setVotedCandidates } = useVotedCandidatesStore();
 
   const { data: votedList } = useQuery<number[]>({
     queryKey: [CANDIDATE_KEY.VOTED_LIST],
     queryFn: () => getVotedList({ userId: loginId }),
     enabled: !!loginId,
   });
+
+  useEffect(() => {
+    if (!votedList) {
+      return;
+    }
+
+    setVotedCandidates(votedList);
+  }, [votedList]);
 
   const {
     isToggle: isCompleteModalToggle,
@@ -64,7 +75,6 @@ const CandidateList = () => {
               name={name}
               profileUrl={profileUrl}
               voteCnt={voteCnt}
-              votedList={votedList || []}
               handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
               handleIncompleteOpenToggle={handleIncompleteOpenToggle}
             />

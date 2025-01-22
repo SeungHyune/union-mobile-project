@@ -8,7 +8,6 @@ interface CandidateItemProps {
   profileUrl: string;
   name: string;
   voteCnt: string;
-  votedList: number[];
   handleCompleteModalOpenToggle: () => void;
   handleIncompleteOpenToggle: () => void;
 }
@@ -18,12 +17,9 @@ const CandidateItem = ({
   profileUrl,
   name,
   voteCnt,
-  votedList,
   handleCompleteModalOpenToggle,
   handleIncompleteOpenToggle,
 }: CandidateItemProps) => {
-  const isVoted = votedList.includes(id);
-
   return (
     <li className={styles.candidateItem} key={id}>
       <Link href={`/profile/${id}`} title={`${name} profile page move`}>
@@ -36,9 +32,7 @@ const CandidateItem = ({
         </div>
       </Link>
       <VoteButton
-        votedList={votedList}
         candidateId={id}
-        isVoted={isVoted}
         handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
         handleIncompleteOpenToggle={handleIncompleteOpenToggle}
       />
