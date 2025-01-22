@@ -72,6 +72,7 @@ const CandidateList = () => {
             <CandidateItem
               key={id}
               id={id}
+              isVoted={(votedList || []).includes(id)}
               name={name}
               profileUrl={profileUrl}
               voteCnt={voteCnt}

@@ -6,9 +6,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "./voteButton.module.css";
 import { CANDIDATE_KEY, VOTE_KEY } from "@/app/_constants/queryKey/queryKey";
 import { useVotedCandidatesStore } from "@/app/_store/useVotedCandidatesStore/useVotedCandidatesStore";
-import { useMemo } from "react";
 
 interface VoteToggleButtonProps {
+  isVoted: boolean;
   candidateId: number;
   height?: string;
   handleCompleteModalOpenToggle: () => void;
@@ -16,6 +16,7 @@ interface VoteToggleButtonProps {
 }
 
 const VoteToggleButton = ({
+  isVoted,
   candidateId,
   height = "3.2rem",
   handleCompleteModalOpenToggle,
@@ -31,6 +32,7 @@ const VoteToggleButton = ({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.LIST] });
       queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.VOTED_LIST] });
+      queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.DETAIL] });
       handleCompleteModalOpenToggle();
     },
   });
@@ -43,11 +45,6 @@ const VoteToggleButton = ({
 
     voteToggleMutation.mutate({ userId: loginId, candidateId });
   };
-
-  const isVoted = useMemo(
-    () => votedCandidates.includes(candidateId),
-    [votedCandidates, candidateId],
-  );
 
   return (
     <button

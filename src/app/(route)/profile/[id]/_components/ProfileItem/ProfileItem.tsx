@@ -41,7 +41,6 @@ const ProfileItem = ({ candidateId }: ProfileItemProps) => {
     handleCloseToggle: handleIncompleteCloseToggle,
   } = useToggle();
 
-  console.log("candidateProfile", candidateProfile);
   if (!candidateProfile) {
     return;
   }
@@ -55,6 +54,7 @@ const ProfileItem = ({ candidateId }: ProfileItemProps) => {
       </article>
       <article className={styles.buttonContainer}>
         <VoteButton
+          isVoted={candidateProfile.voted}
           candidateId={candidateProfile.id}
           height="4.8rem"
           handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}

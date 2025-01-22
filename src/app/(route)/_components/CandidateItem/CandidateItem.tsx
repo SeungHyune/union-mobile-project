@@ -5,6 +5,7 @@ import { VoteButton } from "..";
 
 interface CandidateItemProps {
   id: number;
+  isVoted: boolean;
   profileUrl: string;
   name: string;
   voteCnt: string;
@@ -14,6 +15,7 @@ interface CandidateItemProps {
 
 const CandidateItem = ({
   id,
+  isVoted,
   profileUrl,
   name,
   voteCnt,
@@ -32,6 +34,7 @@ const CandidateItem = ({
         </div>
       </Link>
       <VoteButton
+        isVoted={isVoted}
         candidateId={id}
         handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
         handleIncompleteOpenToggle={handleIncompleteOpenToggle}
