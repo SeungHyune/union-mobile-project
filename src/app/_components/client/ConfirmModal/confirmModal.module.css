@@ -1,0 +1,39 @@
+.confirmModal {
+  display: flex;
+  flex-direction: column;
+  max-width: 33.6rem;
+  max-height: 12.8rem;
+  background-color: #fff;
+  border-radius: 0.8rem;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confirmModal .contentBox {
+  padding: 1.8rem 1.6rem;
+  color: #000;
+  border-bottom: 0.05rem solid #e5e5ea;
+}
+
+.confirmModal .contentBox strong {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+}
+
+.confirmModal .contentBox p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin-top: 0.4rem;
+}
+
+.confirmModal button {
+  flex: 1;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  padding: 1rem 0;
+  color: rgba(66, 50, 213, 1);
+}
