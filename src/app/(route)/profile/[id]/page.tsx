@@ -1,7 +1,7 @@
 import { ProfileItem } from "./_components";
 
 interface ProfilePageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const ProfilePage = async ({ params }: ProfilePageProps) => {
