@@ -18,8 +18,10 @@
 .buttonContainer {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 50%;
   width: 100%;
+  transform: translateX(-50%);
   padding: 1.2rem 1.6rem 2.4rem;
   background-color: #090606;
+  max-width: 60rem;
 }
