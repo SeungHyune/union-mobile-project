@@ -1,0 +1,37 @@
+.candidateItem > a > .imgBox {
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.candidateItem > a > .contentBox {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.candidateItem > a > .contentBox strong {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 1.8rem 0 0.4rem;
+}
+
+.candidateItem > a > .contentBox span {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+  color: #6f76ff;
+}
+
+.candidateItem > button {
+  width: 100%;
+  height: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.6rem;
+  background-color: #4232d5;
+  border-radius: 999;
+  color: #fff;
+  margin-top: 1rem;
+}
