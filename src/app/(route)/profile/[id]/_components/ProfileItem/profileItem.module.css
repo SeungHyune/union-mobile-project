@@ -1,0 +1,15 @@
+.copyrightContainer {
+  font-family: "roboto";
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.6rem;
+  padding: 2.2rem 0;
+  background-color: #070909;
+  color: #f8f8fc;
+  text-align: center;
+}
+
+.buttonContainer {
+  padding: 1.2rem 1.6rem 2.4rem;
+  background-color: #090606;
+}

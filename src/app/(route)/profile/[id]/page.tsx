@@ -1,3 +1,5 @@
+import { ProfileItem } from "./_components";
+
 interface ProfilePageProps {
   params: { id: string };
 }
@@ -5,7 +7,11 @@ interface ProfilePageProps {
 const ProfilePage = async ({ params }: ProfilePageProps) => {
   const { id } = await params;
 
-  return <div>프로필 페이지 {id} </div>;
+  return (
+    <section>
+      <ProfileItem candidateId={id} />
+    </section>
+  );
 };
 
 export default ProfilePage;
