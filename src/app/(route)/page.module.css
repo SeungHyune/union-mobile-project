@@ -65,3 +65,45 @@
   flex-direction: column;
   gap: 1.6rem;
 }
+
+.candidateSection {
+  padding: 5rem 1.6rem 0;
+  background-color: #060203;
+}
+
+.candidateSection article {
+  margin-bottom: 4rem;
+}
+
+.candidateSection article h3 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 2.9rem;
+  color: #fff;
+  margin-bottom: 2.5rem;
+}
+
+.candidateSection article h3 span {
+  display: block;
+}
+
+.candidateSection article p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  color: #aeaeb2;
+}
+
+.candidateSection .copyright {
+  padding: 2.2rem 0;
+  margin-bottom: 0;
+}
+
+.candidateSection .copyright p {
+  font-family: "roboto";
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6rem;
+  color: #f8f8fc;
+  text-align: center;
+}

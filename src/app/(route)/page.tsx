@@ -1,5 +1,5 @@
 import { MainBanner, SpaceImage } from "../_components/server";
-import { DDayTimer } from "./_components";
+import { DDayTimer, CandidateList } from "./_components";
 import styles from "./page.module.css";
 
 const RootPage = () => {
@@ -40,6 +40,19 @@ const RootPage = () => {
             </ul>
           </li>
         </ul>
+      </section>
+      <section className={styles.candidateSection}>
+        <article>
+          <h3>
+            <span>2024</span>
+            <span>Candidate List</span>
+          </h3>
+          <p>※ You can vote for up to 3 candidates</p>
+        </article>
+        <CandidateList />
+        <article className={styles.copyright}>
+          <p>COPYRIGHT © WUPSC ALL RIGHT RESERVED.</p>
+        </article>
       </section>
     </>
   );
