@@ -5,7 +5,7 @@ import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoSt
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "./voteButton.module.css";
 import { CANDIDATE_KEY, VOTE_KEY } from "@/app/_constants/queryKey/queryKey";
-import { useVotedCandidatesStore } from "@/app/_store/useVotedCandidatesStore/useVotedCandidatesStore";
+import { useVotedCandidates } from "@/app/_hooks";
 
 interface VoteToggleButtonProps {
   isVoted: boolean;
@@ -24,7 +24,7 @@ const VoteToggleButton = ({
 }: VoteToggleButtonProps) => {
   const queryClient = useQueryClient();
   const { loginId } = useLoginInfoStore();
-  const { votedCandidates } = useVotedCandidatesStore();
+  const { votedCandidates } = useVotedCandidates();
 
   const voteToggleMutation = useMutation({
     mutationKey: [VOTE_KEY.SUBMIT, candidateId],

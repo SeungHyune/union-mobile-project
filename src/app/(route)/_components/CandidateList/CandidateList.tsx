@@ -3,21 +3,15 @@
 import styles from "./candidateList.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { CandidateListResponse } from "@/app/_types/response/candidate/candidate";
-import {
-  getCandidateList,
-  getVotedList,
-} from "@/app/_service/candidate/candidate";
+import { getCandidateList } from "@/app/_service/candidate/candidate";
 import { CANDIDATE_KEY } from "@/app/_constants/queryKey/queryKey";
 import CandidateItem from "../CandidateItem/CandidateItem";
-import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoStore";
-import { useToggle } from "@/app/_hooks";
+import { useToggle, useVotedCandidates } from "@/app/_hooks";
 import { ConfirmModal } from "@/app/_components/client";
 import {
   VOTE_COMPLETE_MODAL,
   VOTE_INCOMPLETE_MODAL,
 } from "./candidate.constants";
-import { useVotedCandidatesStore } from "@/app/_store/useVotedCandidatesStore/useVotedCandidatesStore";
-import { useEffect } from "react";
 
 const CandidateList = () => {
   const { data: candidates } = useQuery<CandidateListResponse>({
@@ -30,22 +24,7 @@ const CandidateList = () => {
       }),
   });
 
-  const { loginId } = useLoginInfoStore();
-  const { setVotedCandidates } = useVotedCandidatesStore();
-
-  const { data: votedList } = useQuery<number[]>({
-    queryKey: [CANDIDATE_KEY.VOTED_LIST],
-    queryFn: () => getVotedList({ userId: loginId }),
-    enabled: !!loginId,
-  });
-
-  useEffect(() => {
-    if (!votedList) {
-      return;
-    }
-
-    setVotedCandidates(votedList);
-  }, [votedList]);
+  const { votedCandidates } = useVotedCandidates();
 
   const {
     isToggle: isCompleteModalToggle,
@@ -72,7 +51,7 @@ const CandidateList = () => {
             <CandidateItem
               key={id}
               id={id}
-              isVoted={(votedList || []).includes(id)}
+              isVoted={(votedCandidates || []).includes(id)}
               name={name}
               profileUrl={profileUrl}
               voteCnt={voteCnt}
