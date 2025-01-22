@@ -3,17 +3,15 @@
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./loginForm.module.css";
+import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoStore";
 
 const LoginForm = () => {
-  const [loginId, setLoginId] = useState("");
+  const { loginId, setLoginId } = useLoginInfoStore();
   const [userId, setUserId] = useState("");
   const [isLoginValidate, setIsLoginValidate] = useState(true);
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
 
   useEffect(() => {
-    const storagedLoginId = localStorage.getItem("loginId") || "";
-    setLoginId(storagedLoginId);
-
     if (loginId === "") {
       return;
     }
@@ -34,9 +32,11 @@ const LoginForm = () => {
     event.preventDefault();
 
     const loginId = userId.trim();
-    if (loginId === "" || loginId.length < 3) {
+    if (loginId === "" || loginId.length < 3 || loginId.length > 16) {
       setIsLoginValidate(false);
-      setLoginErrorMessage("The ID must be at least 3 characters long.");
+      setLoginErrorMessage(
+        "Username must be between 3 and 16 characters long.",
+      );
       return;
     }
 
@@ -47,7 +47,6 @@ const LoginForm = () => {
       return;
     }
 
-    localStorage.setItem("loginId", userId);
     setLoginId(userId);
   };
 

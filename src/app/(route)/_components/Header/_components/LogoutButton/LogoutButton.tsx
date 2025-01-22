@@ -1,13 +1,13 @@
 "use client";
 
 import { CloseIcon } from "@/app/_components/server/icons";
+import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoStore";
 
 const LogoutButton = () => {
+  const { loginId, setLoginId } = useLoginInfoStore();
   const handleLogOut = () => {
-    const isLogin = !!localStorage.getItem("loginId");
-
-    if (isLogin) {
-      localStorage.removeItem("loginId");
+    if (loginId) {
+      setLoginId("");
     }
   };
 
