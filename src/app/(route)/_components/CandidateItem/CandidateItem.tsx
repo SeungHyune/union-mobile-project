@@ -1,12 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./candidateItem.module.css";
+import { VoteButton } from "./_components";
 
 interface CandidateItemProps {
   id: number;
   profileUrl: string;
   name: string;
   voteCnt: string;
+  votedList: number[];
+  handleCompleteModalOpenToggle: () => void;
+  handleIncompleteOpenToggle: () => void;
 }
 
 const CandidateItem = ({
@@ -14,7 +18,12 @@ const CandidateItem = ({
   profileUrl,
   name,
   voteCnt,
+  votedList,
+  handleCompleteModalOpenToggle,
+  handleIncompleteOpenToggle,
 }: CandidateItemProps) => {
+  const isVoted = votedList.includes(id);
+
   return (
     <li className={styles.candidateItem} key={id}>
       <Link href={`/profile/${id}`} title={`${name} profile page move`}>
@@ -26,7 +35,13 @@ const CandidateItem = ({
           <span>{voteCnt} voted</span>
         </div>
       </Link>
-      <button type="button">Vote</button>
+      <VoteButton
+        votedList={votedList}
+        candidateId={id}
+        isVoted={isVoted}
+        handleCompleteModalOpenToggle={handleCompleteModalOpenToggle}
+        handleIncompleteOpenToggle={handleIncompleteOpenToggle}
+      />
     </li>
   );
 };
