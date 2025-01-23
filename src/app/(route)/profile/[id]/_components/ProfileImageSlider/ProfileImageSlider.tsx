@@ -3,8 +3,9 @@
 import { CandidateProfileInfo } from "@/app/_types/response/candidate/candidate";
 import Image from "next/image";
 import styles from "./profileImageSlider.module.css";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useSliderDragAction, useProfileSlider, useAutoSlide } from "./_hooks";
+import { MAX_WIDTH } from "./profileImageSlider.constants";
 
 interface ProfileImageSliderProps {
   candidateName: string;
@@ -16,12 +17,21 @@ const ProfileImageSlider = ({
   profileInfoList,
 }: ProfileImageSliderProps) => {
   const sliderRef = useRef<HTMLUListElement>(null);
+  const viewPortWidth = useMemo(() => {
+    return window.innerWidth > MAX_WIDTH ? MAX_WIDTH : window.innerWidth;
+  }, [window.innerWidth]);
 
   const { page, handleSelectSlide, handlePrevSlide, handleNextSlide } =
     useProfileSlider({ profileListLength: profileInfoList.length });
 
   const { isDragging, handleDragStart, handleDrag, handleDragEnd } =
-    useSliderDragAction({ page, sliderRef, handlePrevSlide, handleNextSlide });
+    useSliderDragAction({
+      page,
+      viewPortWidth,
+      sliderRef,
+      handlePrevSlide,
+      handleNextSlide,
+    });
 
   useAutoSlide({
     page,
@@ -34,9 +44,9 @@ const ProfileImageSlider = ({
       <ul
         className={styles.slider}
         style={{
-          width: `${profileInfoList.length * 100}vw`,
+          width: `${profileInfoList.length * viewPortWidth}px`,
           transition: isDragging ? "none" : "transform 0.3s ease",
-          transform: `translateX(-${(page - 1) * 100}vw)`,
+          transform: `translateX(-${(page - 1) * viewPortWidth}px)`,
         }}
         onMouseDown={handleDragStart}
         onTouchStart={handleDragStart}

@@ -2,6 +2,7 @@ import { RefObject, useRef, useState } from "react";
 
 interface UseSliderDragActionProps {
   page: number;
+  viewPortWidth: number;
   sliderRef: RefObject<HTMLUListElement | null>;
   handlePrevSlide: () => void;
   handleNextSlide: () => void;
@@ -9,6 +10,7 @@ interface UseSliderDragActionProps {
 
 const useSliderDragAction = ({
   page,
+  viewPortWidth,
   sliderRef,
   handlePrevSlide,
   handleNextSlide,
@@ -54,14 +56,14 @@ const useSliderDragAction = ({
     dragOffsetRef.current = currentX - startX.current;
 
     if (sliderRef.current) {
-      sliderRef.current.style.transform = `translateX(calc(-${(page - 1) * 100}vw + ${dragOffsetRef.current}px))`;
+      sliderRef.current.style.transform = `translateX(calc(-${(page - 1) * viewPortWidth}px + ${dragOffsetRef.current}px))`;
     }
   };
 
   const handleDragEnd = () => {
     setIsDragging(false);
 
-    const dragThreshold = window.innerWidth * 0.5;
+    const dragThreshold = viewPortWidth * 0.5;
 
     if (dragOffsetRef.current > dragThreshold) {
       handlePrevSlide();
@@ -73,7 +75,7 @@ const useSliderDragAction = ({
 
     if (sliderRef.current) {
       sliderRef.current.style.transition = "transform 0.3s ease";
-      sliderRef.current.style.transform = `translateX(-${(page - 1) * 100}vw)`;
+      sliderRef.current.style.transform = `translateX(-${(page - 1) * viewPortWidth}px)`;
     }
   };
 
