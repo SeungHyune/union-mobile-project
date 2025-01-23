@@ -6,6 +6,7 @@
   display: flex;
   list-style: none;
   transform: translateX(0);
+  overscroll-behavior: contain;
 }
 
 .slider li {
