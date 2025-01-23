@@ -35,6 +35,7 @@ const ProfileItem = ({ candidateId }: ProfileItemProps) => {
     handleOpenToggle: handleCompleteModalOpenToggle,
     handleCloseToggle: handleCompleteModalCloseToggle,
   } = useToggle();
+
   const {
     isToggle: isIncompleteModalToggle,
     handleOpenToggle: handleIncompleteOpenToggle,
