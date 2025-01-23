@@ -1,12 +1,17 @@
 import { MainBanner, SpaceImage } from "@/app/_components/server";
 import { LoginForm } from "./_components";
+import { Header } from "../_components";
+import { LogoutButton } from "../_components/Header/_components";
 
 const LoginPage = () => {
   return (
-    <MainBanner>
-      <LoginForm />
-      <SpaceImage />
-    </MainBanner>
+    <>
+      <Header rightChildren={<LogoutButton />} />
+      <MainBanner>
+        <LoginForm />
+        <SpaceImage />
+      </MainBanner>
+    </>
   );
 };
 

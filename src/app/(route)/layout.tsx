@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Kantumruy_Pro } from "next/font/google";
 import "@/app/_styles/globals.css";
-import { Header, TanstackProvider } from "./_components";
+import { TanstackProvider } from "./_components";
 
 const kantumruyPro = Kantumruy_Pro({
   subsets: ["latin"],
@@ -31,7 +31,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${kantumruyPro.className}`}>
         <TanstackProvider>
-          <Header />
           <main id="app">{children}</main>
         </TanstackProvider>
       </body>

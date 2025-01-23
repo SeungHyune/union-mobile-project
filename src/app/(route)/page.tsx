@@ -1,10 +1,12 @@
 import { MainBanner, SpaceImage } from "../_components/server";
-import { DDayTimer, CandidateList } from "./_components";
+import { DDayTimer, CandidateList, Header } from "./_components";
+import { LogoutButton } from "./_components/Header/_components";
 import styles from "./page.module.css";
 
 const RootPage = () => {
   return (
     <>
+      <Header rightChildren={<LogoutButton />} />
       <MainBanner>
         <DDayTimer />
         <SpaceImage />
