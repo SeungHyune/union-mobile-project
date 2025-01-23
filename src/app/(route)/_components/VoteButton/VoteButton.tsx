@@ -1,11 +1,7 @@
 "use client";
 
-import { fetchVoteSubmit } from "@/app/_service/vote/vote";
-import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoStore";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "./voteButton.module.css";
-import { CANDIDATE_KEY, VOTE_KEY } from "@/app/_constants/queryKey/queryKey";
-import { useVotedCandidates } from "@/app/_hooks";
+import { useVote } from "./_hook";
 
 interface VoteToggleButtonProps {
   isVoted: boolean;
@@ -15,36 +11,18 @@ interface VoteToggleButtonProps {
   handleIncompleteOpenToggle: () => void;
 }
 
-const VoteToggleButton = ({
+const VoteButton = ({
   isVoted,
   candidateId,
   height = "3.2rem",
   handleCompleteModalOpenToggle,
   handleIncompleteOpenToggle,
 }: VoteToggleButtonProps) => {
-  const queryClient = useQueryClient();
-  const { loginId } = useLoginInfoStore();
-  const { votedCandidates } = useVotedCandidates();
-
-  const voteToggleMutation = useMutation({
-    mutationKey: [VOTE_KEY.SUBMIT, candidateId],
-    mutationFn: fetchVoteSubmit,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.LIST] });
-      queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.VOTED_LIST] });
-      queryClient.invalidateQueries({ queryKey: [CANDIDATE_KEY.DETAIL] });
-      handleCompleteModalOpenToggle();
-    },
+  const { handleVoteSubmit } = useVote({
+    candidateId,
+    handleCompleteModalOpenToggle,
+    handleIncompleteOpenToggle,
   });
-
-  const handleVoteToggle = () => {
-    if (votedCandidates.length >= 3) {
-      handleIncompleteOpenToggle();
-      return;
-    }
-
-    voteToggleMutation.mutate({ userId: loginId, candidateId });
-  };
 
   return (
     <button
@@ -57,11 +35,11 @@ const VoteToggleButton = ({
       }}
       type="button"
       disabled={isVoted}
-      onClick={handleVoteToggle}
+      onClick={handleVoteSubmit}
     >
       {isVoted ? "Voted" : "Vote"}
     </button>
   );
 };
 
-export default VoteToggleButton;
+export default VoteButton;
