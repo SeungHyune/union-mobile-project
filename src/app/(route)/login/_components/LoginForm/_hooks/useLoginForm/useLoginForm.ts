@@ -1,4 +1,6 @@
+import { LOGIN_ID } from "@/app/_constants/constants";
 import { useLoginInfoStore } from "@/app/_store/useLoginInfoStore/useLoginInfoStore";
+import { setCookie } from "@/app/_utils";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -44,7 +46,8 @@ const useLoginForm = () => {
       return;
     }
 
-    setLoginId(userId);
+    setLoginId(loginId);
+    setCookie(LOGIN_ID, loginId);
   };
 
   return {
