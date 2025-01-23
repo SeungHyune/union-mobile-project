@@ -24,7 +24,7 @@ NEXT_PUBLIC_API_BASE_URL=https://api-wmu-dev.angkorcoms.com
 - 타이머 기능을 개발했습니다.
     - **특정 DDay 날짜를 설정**하면 DDay 날짜까지 남은 `day, hour, min, second`를 반환해 줍니다.
 - `CandidateList`를 컴포넌트를 통해 모든 후보자들을 확인할 수 있습니다.
-    - `~~useQuery`를 통해 모든 데이터를 한 번에 패칭 받습니다.~~
+    - ~~`useQuery`를 통해 모든 데이터를 한 번에 패칭 받습니다.~~
         - `useInfiniteQuery`를 통해 **무한 스크롤 기능으로 구현**했습니다.
         - 데이터 패칭 한 번에 **지정한 size 만큼 데이터를 호출**합니다.
         - 데이터의 마지막 지점에 도달하면 다음 데이터를 불러옵니다. (추가로, 지정한 size 데이터를 불러옵니다.)
