@@ -53,6 +53,7 @@ const ProfileImageSlider = ({
               <Image
                 src={profileUrl}
                 alt={`${candidateName} ${index} image`}
+                unoptimized={true}
                 fill
                 priority
               />
