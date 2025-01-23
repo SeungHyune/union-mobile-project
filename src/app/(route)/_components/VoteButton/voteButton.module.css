@@ -1,4 +1,7 @@
 .voteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   font-size: 1.6rem;
   font-weight: 600;

@@ -2,6 +2,9 @@
 
 import styles from "./voteButton.module.css";
 import { useVote } from "./_hook";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
+import { VoteCompletedIcon } from "@/app/_components/server/icons";
 
 interface VoteToggleButtonProps {
   isVoted: boolean;
@@ -18,11 +21,16 @@ const VoteButton = ({
   handleCompleteModalOpenToggle,
   handleIncompleteOpenToggle,
 }: VoteToggleButtonProps) => {
+  const pathname = usePathname();
   const { handleVoteSubmit } = useVote({
     candidateId,
     handleCompleteModalOpenToggle,
     handleIncompleteOpenToggle,
   });
+
+  const isVotedCompleteIcon = useMemo(() => {
+    return pathname.includes("/profile");
+  }, [pathname, isVoted]);
 
   return (
     <button
@@ -37,6 +45,7 @@ const VoteButton = ({
       disabled={isVoted}
       onClick={handleVoteSubmit}
     >
+      {isVotedCompleteIcon && isVoted ? <VoteCompletedIcon /> : <></>}
       {isVoted ? "Voted" : "Vote"}
     </button>
   );
