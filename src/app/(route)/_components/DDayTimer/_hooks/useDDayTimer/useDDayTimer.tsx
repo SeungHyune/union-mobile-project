@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DDAY } from "../../ddayTimer.constants";
+import useDDayTimerStore from "@/app/_store/useDDayTimerStore/useDDayTimerStore";
 
 const useDDayTimer = () => {
   const targetDate = new Date(DDAY);
 
-  const [dday, setDday] = useState({ days: 0, hours: 0, mins: 0, seconds: 0 });
+  const { dday, setDDay } = useDDayTimerStore();
 
   useEffect(() => {
     const ddayInterval = setInterval(() => {
@@ -13,7 +14,7 @@ const useDDayTimer = () => {
 
       if (ddayCountdown < 0) {
         clearInterval(ddayInterval);
-        setDday({ days: 0, hours: 0, mins: 0, seconds: 0 });
+        setDDay({ days: 0, hours: 0, mins: 0, seconds: 0 });
         return;
       }
 
@@ -24,7 +25,7 @@ const useDDayTimer = () => {
       const mins = Math.floor((ddayCountdown % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((ddayCountdown % (1000 * 60)) / 1000);
 
-      setDday({ days, hours, mins, seconds });
+      setDDay({ days, hours, mins, seconds });
     }, 1000);
 
     return () => clearInterval(ddayInterval);
