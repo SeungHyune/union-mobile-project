@@ -1,10 +1,6 @@
 "use client";
 
 import styles from "./candidateList.module.css";
-import { useQuery } from "@tanstack/react-query";
-import { CandidateListResponse } from "@/app/_types/response/candidate/candidate";
-import { getCandidateList } from "@/app/_service/candidate/candidate";
-import { CANDIDATE_KEY } from "@/app/_constants/queryKey/queryKey";
 import CandidateItem from "../CandidateItem/CandidateItem";
 import { useToggle, useVotedCandidates } from "@/app/_hooks";
 import { ConfirmModal } from "@/app/_components/client";
@@ -12,17 +8,14 @@ import {
   VOTE_COMPLETE_MODAL,
   VOTE_INCOMPLETE_MODAL,
 } from "./candidate.constants";
+import { useInfiniteScroll } from "./_hooks";
 
-const CandidateList = () => {
-  const { data: candidates } = useQuery<CandidateListResponse>({
-    queryKey: [CANDIDATE_KEY.LIST],
-    queryFn: () =>
-      getCandidateList({
-        page: String(0),
-        size: String(10),
-        sort: ["name,ASC"],
-      }),
-  });
+interface CandidateListProps {
+  keyword?: string;
+}
+
+const CandidateList = ({ keyword = "" }: CandidateListProps) => {
+  const { ref, candidateList } = useInfiniteScroll({ keyword });
 
   const { votedCandidates } = useVotedCandidates();
 
@@ -37,16 +30,16 @@ const CandidateList = () => {
     handleCloseToggle: handleIncompleteCloseToggle,
   } = useToggle();
 
-  if (!candidates) {
+  if (!candidateList) {
     return null;
   }
 
-  const { content } = candidates;
+  const candidates = candidateList?.pages.flatMap((movie) => movie.content);
 
   return (
     <>
       <ul className={styles.candidateList}>
-        {content.map(({ id, name, profileUrl, voteCnt }) => {
+        {candidates.map(({ id, name, profileUrl, voteCnt }) => {
           return (
             <CandidateItem
               key={id}
@@ -61,6 +54,7 @@ const CandidateList = () => {
           );
         })}
       </ul>
+      <div ref={ref} />
       <ConfirmModal
         isToggle={isCompleteModalToggle}
         title={VOTE_COMPLETE_MODAL.TITLE}

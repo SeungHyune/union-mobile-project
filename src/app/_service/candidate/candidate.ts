@@ -1,20 +1,18 @@
 import { fetchApi } from "@/app/_api";
 import { CANDIDATE } from "@/app/_constants/endPoint";
+import { CandidateListResponse } from "@/app/_types/response/candidate/candidate";
+import { QueryFunction } from "@tanstack/react-query";
 
-interface GetCandidateListProps {
-  page: string;
-  size: string;
-  sort: ("voteCnt,DESC" | "name,ASC" | "candidateNumber,ASC")[];
-  keyword?: string;
-}
+export const getCandidateList: QueryFunction<
+  CandidateListResponse,
+  [_1: string, _2: string, _3: number, _4: string[]],
+  number
+> = async ({ queryKey, pageParam }) => {
+  const keyword = queryKey[1] || "";
+  const size = queryKey[2];
+  const sort = queryKey[3];
 
-export const getCandidateList = async ({
-  page,
-  size,
-  sort,
-  keyword,
-}: GetCandidateListProps) => {
-  const queryString = `page=${page}&size=${size}&sort=${sort}&searchKeyword=${keyword ? keyword : ""}`;
+  const queryString = `page=${pageParam}&size=${size}&sort=${sort}&searchKeyword=${keyword}`;
 
   const response = await fetchApi(`${CANDIDATE.LIST}?${queryString}`, {
     method: "GET",

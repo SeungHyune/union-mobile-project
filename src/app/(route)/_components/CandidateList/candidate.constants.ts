@@ -9,3 +9,6 @@ export const VOTE_INCOMPLETE_MODAL = {
   CONTENT: "You can only vote for up to 3 participants.",
   COMPLETE_BUTTON_TEXT: "Confirm",
 };
+
+export const PAGE_SIZE = 5;
+export const SORT_OPTIONS = ["name,ASC"];
